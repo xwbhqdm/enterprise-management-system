@@ -1,0 +1,15 @@
+var express = require('express');
+var UserRouter = express.Router();
+var UserController = require('../../controllers/web/UserController')
+//图片上传
+const multer  = require('multer')
+const upload = multer({ dest: 'public/avataruploads/'})
+/* GET users listing. */
+UserRouter.post("/webapi/user/login",UserController.login)
+// UserRouter.post("/adminapi/user/upload",upload.single('file'),UserController.upload)
+UserRouter.post("/webapi/user/add",upload.single('file'),UserController.add)
+// UserRouter.get("/adminapi/user/list",UserController.getList)
+// UserRouter.get("/adminapi/user/list/:id",UserController.getList)
+// UserRouter.delete("/adminapi/user/list/:id",UserController.delList)
+// UserRouter.put("/adminapi/user/list/:id",UserController.putList)
+module.exports = UserRouter;
